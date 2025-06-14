@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import { DiaryService } from '../lib/database';
 import { Edit3, Trash2, Calendar as CalendarIcon } from 'lucide-react';
 import Layout from '../components/Layout';
 import { Button } from '../components/ui/button';
@@ -13,60 +15,79 @@ const DiaryView = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { id } = useParams();
+  const { user } = useAuth();
   const [entry, setEntry] = useState<any>(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
-
-  // Sample data - in real app, this would come from Supabase
-  const sampleEntries = [
-    {
-      id: 1,
-      date: new Date(2025, 5, 11),
-      title: t('diary.entries.relaxing_sunday'),
-      content: t('diary.entries.relaxing_sunday'),
-      tags: [t('diary.tags.book'), t('diary.tags.life')],
-    },
-    {
-      id: 2,
-      date: new Date(2025, 5, 8),
-      title: t('diary.entries.productive_work'),
-      content: t('diary.entries.productive_work'),
-      tags: [t('diary.tags.work')],
-    },
-    {
-      id: 3,
-      date: new Date(2025, 5, 6),
-      title: t('diary.entries.cooking_recipe'),
-      content: t('diary.entries.cooking_recipe'),
-      tags: [t('diary.tags.food')],
-    }
-  ];
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const foundEntry = sampleEntries.find(e => e.id === Number(id));
-    setEntry(foundEntry);
-  }, [id]);
+    const loadEntry = async () => {
+      if (!id || !user) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const entryData = await DiaryService.getDiaryEntryById(id);
+        setEntry(entryData);
+      } catch (error: any) {
+        console.error('Error loading diary entry:', error);
+        toast({
+          title: t('messages.error'),
+          description: error.message || 'Failed to load diary entry',
+          variant: "destructive",
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadEntry();
+  }, [id, user, t]);
 
   const handleEdit = () => {
     navigate(`/diary/${id}/edit`);
   };
 
-  const handleDelete = () => {
-    // In real app, delete from Supabase
-    toast({
-      title: t('messages.success'),
-      description: t('diary.entry_deleted'),
-    });
-    navigate('/');
+  const handleDelete = async () => {
+    if (!entry || !user) return;
+
+    try {
+      await DiaryService.deleteDiaryEntry(entry.id);
+      toast({
+        title: t('messages.success'),
+        description: t('diary.entry_deleted'),
+      });
+      navigate('/');
+    } catch (error: any) {
+      console.error('Error deleting entry:', error);
+      toast({
+        title: t('messages.error'),
+        description: error.message || 'Failed to delete entry',
+        variant: "destructive",
+      });
+    }
   };
 
-  const formatDate = (date: Date) => {
-    return date.toLocaleDateString(undefined, {
+  const formatDate = (date: string | Date) => {
+    const dateObj = typeof date === 'string' ? new Date(date) : date;
+    return dateObj.toLocaleDateString(undefined, {
       weekday: 'long',
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     });
   };
+
+  if (loading) {
+    return (
+      <Layout title={t('diary.view_entry')} showBack onBack={() => navigate('/')}>
+        <div className="p-4 text-center">
+          <p className="text-app-text-muted">{t('messages.loading', 'Loading...')}</p>
+        </div>
+      </Layout>
+    );
+  }
 
   if (!entry) {
     return (
@@ -116,9 +137,30 @@ const DiaryView = () => {
             </div>
 
             {/* Title */}
-            <h1 className="text-2xl font-semibold text-app-text mb-4">
-              {entry.title}
-            </h1>
+            <div className="flex items-center gap-3 mb-4">
+              {entry.mood && (
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl">{entry.mood.emoji}</span>
+                  <span className="text-sm" style={{ color: entry.mood.color }}>
+                    {entry.mood.name}
+                  </span>
+                </div>
+              )}
+              <h1 className="text-2xl font-semibold text-app-text">
+                {entry.title}
+              </h1>
+            </div>
+
+            {/* Photo */}
+            {entry.photo_url && (
+              <div className="mb-4">
+                <img 
+                  src={entry.photo_url} 
+                  alt="Diary entry" 
+                  className="w-16 h-16 object-cover rounded-lg border border-app-border"
+                />
+              </div>
+            )}
 
             {/* Content */}
             <div className="text-app-text mb-6 whitespace-pre-wrap">

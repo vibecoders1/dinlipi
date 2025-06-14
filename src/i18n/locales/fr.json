@@ -93,7 +93,7 @@
   "messages": {
     "content_required": "Veuillez saisir du contenu",
     "signin_required": "Veuillez vous connecter pour créer des entrées de journal",
-    "entry_saved": "Entrée de prière sauvegardée avec succès!",
+    "entry_saved": "Entrée de journal sauvegardée avec succès!",
     "save_failed": "Échec de la sauvegarde de l'entrée",
     "success": "Succès",
     "error": "Erreur"
@@ -138,7 +138,7 @@
     "back": "←"
   },
   "diary": {
-    "new_entry": "Ajouter une nouvelle prière",
+    "new_entry": "Ajouter une nouvelle entrée",
     "add_new": "Ajouter une nouvelle entrée de journal",
     "no_entries": "Aucune entrée de journal pour le moment",
     "create_first_entry": "Créez votre première entrée",
@@ -163,6 +163,7 @@
     "tags_label": "Étiquettes",
     "add_tag_placeholder": "Ajouter une étiquette...",
     "update_entry": "Mettre à jour l'entrée",
+    "create_entry": "Créer une entrée",
     "entries": {
       "relaxing_sunday": "Un dimanche relaxant. Je me suis levé tard, j'ai pris un bon brunch et j'ai passé l'après-midi à lire un nouveau livre.",
       "productive_work": "Journée productive au travail ! J'ai terminé un projet majeur et j'ai reçu des commentaires positifs. Je me sens accompli.",

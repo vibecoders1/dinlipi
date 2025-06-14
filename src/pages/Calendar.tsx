@@ -121,7 +121,7 @@ const Calendar = () => {
         {/* Floating Add Button */}
         <div className="fixed bottom-20 right-4">
           <button 
-            onClick={() => navigate('/new-prayer')}
+            onClick={() => navigate('/diary/new')}
             className="bg-app-purple hover:bg-app-purple-dark w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-colors"
             aria-label={t('diary.add_new')}
           >

@@ -15,7 +15,7 @@ import Calendar from "./pages/Calendar";
 import Mood from "./pages/Mood";
 import Settings from "./pages/Settings";
 import PracticeForm from "./pages/PracticeForm";
-import NewPrayerForm from "./pages/NewPrayerForm";
+import NewDiaryForm from "./pages/NewDiaryForm";
 import DiaryView from "./pages/DiaryView";
 import DiaryEdit from "./pages/DiaryEdit";
 import MoodPractice from "./pages/MoodPractice";
@@ -26,7 +26,9 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const AppContent = () => {
+  console.log('AppContent rendering...');
   const { user, loading } = useAuth();
+  console.log('AppContent - user:', user, 'loading:', loading);
   const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
 
   if (loading) {
@@ -55,8 +57,8 @@ const AppContent = () => {
         <Route path="/mood" element={<Mood />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/practice" element={<PracticeForm />} />
-        <Route path="/new-prayer" element={<NewPrayerForm />} />
-        <Route path="/diary/new" element={<NewPrayerForm />} />
+        
+        <Route path="/diary/new" element={<NewDiaryForm />} />
         <Route path="/diary/:id" element={<DiaryView />} />
         <Route path="/diary/:id/edit" element={<DiaryEdit />} />
         <Route path="/mood-practice" element={<MoodPractice />} />

@@ -9,6 +9,7 @@ interface AuthContextType {
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string, fullName?: string) => Promise<void>;
+  signInWithGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<void>;
 }
@@ -83,6 +84,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const signInWithGoogle = async () => {
+    setLoading(true);
+    try {
+      await AuthService.signInWithGoogle();
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const resetPassword = async (email: string) => {
     await AuthService.resetPassword(email);
   };
@@ -93,6 +103,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     loading,
     signIn,
     signUp,
+    signInWithGoogle,
     signOut,
     resetPassword,
   };
@@ -107,6 +118,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 export function useAuth() {
   const context = useContext(AuthContext);
   if (context === undefined) {
+    console.error('useAuth called outside of AuthProvider');
+    console.error('Current location:', window.location.href);
+    console.error('AuthContext value:', context);
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;

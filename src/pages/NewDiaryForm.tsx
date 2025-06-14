@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Bold, Italic, Plus, X, CalendarIcon } from 'lucide-react';
 import { format } from 'date-fns';
 import Layout from '../components/Layout';
@@ -12,20 +12,20 @@ import { Badge } from '../components/ui/badge';
 import { Calendar } from '../components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '../components/ui/popover';
 import { cn } from '../lib/utils';
-import { toast } from '../hooks/use-toast';
 import { useAuth } from '../contexts/AuthContext';
 import { DiaryService } from '../lib/database';
+import { toast } from '../hooks/use-toast';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 
-const DiaryEdit = () => {
+const NewDiaryForm = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { id } = useParams();
   const { user } = useAuth();
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
+    date: new Date().toISOString().split('T')[0],
     title: '',
     content: '',
-    date: '',
     tags: [] as string[],
     photoFile: null as File | null,
     photoUrl: '',
@@ -33,62 +33,35 @@ const DiaryEdit = () => {
   });
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [newTag, setNewTag] = useState('');
-  const [loading, setLoading] = useState(true);
   const [moods, setMoods] = useState<any[]>([]);
 
+  // Load moods and pre-populate date from URL parameters
   useEffect(() => {
-    console.log('DiaryEdit useEffect - id:', id, 'user:', user);
-    
-    const loadMoodsAndEntry = async () => {
-      if (!id || !user) {
-        console.log('No id or user, setting loading to false');
-        setLoading(false);
-        return;
-      }
-
+    const loadMoods = async () => {
       try {
-        // Load moods
         const moodsData = await DiaryService.getMoods();
         setMoods(moodsData);
-
-        // Load entry
-        console.log('Loading entry with id:', id);
-        const entry = await DiaryService.getDiaryEntryById(id);
-        console.log('Loaded entry:', entry);
-        if (entry) {
-          setFormData({
-            title: entry.title,
-            content: entry.content,
-            date: entry.date,
-            tags: entry.tags || [],
-            photoFile: null,
-            photoUrl: entry.photo_url || '',
-            mood_id: entry.mood_id || '',
-          });
-          setSelectedDate(new Date(entry.date));
-        } else {
-          toast({
-            title: t('messages.error'),
-            description: t('diary.entry_not_found'),
-            variant: "destructive",
-          });
-          navigate('/');
+        // Set default to 'happy' mood
+        const happyMood = moodsData.find(mood => mood.name === 'happy');
+        if (happyMood) {
+          setFormData(prev => ({ ...prev, mood_id: happyMood.id }));
         }
       } catch (error: any) {
-        console.error('Error loading diary entry:', error);
-        toast({
-          title: t('messages.error'),
-          description: error.message || 'Failed to load diary entry',
-          variant: "destructive",
-        });
-        navigate('/');
-      } finally {
-        setLoading(false);
+        console.error('Error loading moods:', error);
       }
     };
 
-    loadMoodsAndEntry();
-  }, [id, user, t, navigate]);
+    const dateParam = searchParams.get('date');
+    if (dateParam) {
+      const paramDate = new Date(dateParam);
+      if (!isNaN(paramDate.getTime())) {
+        setSelectedDate(paramDate);
+        setFormData(prev => ({ ...prev, date: dateParam }));
+      }
+    }
+
+    loadMoods();
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -102,7 +75,7 @@ const DiaryEdit = () => {
       return;
     }
 
-    if (!user || !id) {
+    if (!user) {
       toast({
         title: t('messages.error'),
         description: t('messages.signin_required'),
@@ -112,24 +85,24 @@ const DiaryEdit = () => {
     }
 
     try {
-      await DiaryService.updateDiaryEntry(id, {
+      await DiaryService.createDiaryEntry({
+        user_id: user.id,
         title: formData.title,
         content: formData.content,
         date: formData.date,
         photo_url: formData.photoUrl || null,
-        user_id: user.id,
         tags: formData.tags,
         mood_id: formData.mood_id || null,
       });
-
+      
       toast({
         title: t('messages.success'),
-        description: t('diary.entry_updated'),
+        description: t('messages.entry_saved'),
       });
       
-      navigate(`/diary/${id}`);
+      navigate('/');
     } catch (error: any) {
-      console.error('Error updating entry:', error);
+      console.error('Error saving entry:', error);
       toast({
         title: t('messages.error'),
         description: error.message || t('messages.save_failed'),
@@ -171,25 +144,10 @@ const DiaryEdit = () => {
     }
   };
 
-  if (loading) {
-    return (
-      <Layout 
-        title={t('diary.edit_entry')}
-        showBack
-        onBack={() => navigate(`/diary/${id}`)}
-      >
-        <div className="p-4 text-center">
-          <p className="text-app-text-muted">{t('messages.loading', 'Loading...')}</p>
-        </div>
-      </Layout>
-    );
-  }
-
   return (
     <Layout 
-      title={t('diary.edit_entry')}
+      title={t('diary.new_entry')}
       showBack
-      onBack={() => navigate(`/diary/${id}`)}
     >
       <div className="p-4">
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -389,7 +347,7 @@ const DiaryEdit = () => {
             type="submit"
             className="w-full bg-app-purple hover:bg-app-purple-dark text-white font-medium py-3"
           >
-            {t('diary.update_entry')}
+            {t('diary.create_entry')}
           </Button>
         </form>
       </div>
@@ -397,4 +355,4 @@ const DiaryEdit = () => {
   );
 };
 
-export default DiaryEdit;
+export default NewDiaryForm;

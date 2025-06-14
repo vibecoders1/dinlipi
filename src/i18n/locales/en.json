@@ -93,7 +93,7 @@
   "messages": {
     "content_required": "Please enter some content",
     "signin_required": "Please sign in to create diary entries", 
-    "entry_saved": "Prayer entry saved successfully!",
+    "entry_saved": "Diary entry saved successfully!",
     "save_failed": "Failed to save entry",
     "success": "Success",
     "error": "Error"
@@ -138,7 +138,7 @@
     "back": "←"
   },
   "diary": {
-    "new_entry": "Add New Prayer",
+    "new_entry": "Add New Entry",
     "add_new": "Add New Diary Entry",
     "no_entries": "No diary entries yet",
     "create_first_entry": "Create your first entry",
@@ -163,6 +163,7 @@
     "tags_label": "Tags",
     "add_tag_placeholder": "Add a tag...",
     "update_entry": "Update Entry",
+    "create_entry": "Create Entry",
     "entries": {
       "relaxing_sunday": "A relaxing Sunday. Woke up late, had a nice brunch and spent the afternoon reading a new book.",
       "productive_work": "Productive day at work! Finished a major project and got positive feedback. Feeling accomplished.",
