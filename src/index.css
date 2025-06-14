@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    --background: 240 10% 95%;
+    --foreground: 240 6% 10%;
+
+    --card: 240 10% 95%;
+    --card-foreground: 240 6% 10%;
+
+    --popover: 240 10% 95%;
+    --popover-foreground: 240 6% 10%;
+
+    --primary: 265 83% 57%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 265 83% 57%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 265 83% 57%;
+
+    --radius: 0.75rem;
+
+    /* App specific colors */
+    --app-bg: 240 10% 7%;
+    --app-surface: 240 8% 12%;
+    --app-purple: 265 83% 57%;
+    --app-purple-light: 265 63% 67%;
+    --app-purple-dark: 265 73% 47%;
+    --app-text: 240 10% 95%;
+    --app-text-muted: 240 5% 65%;
+    --app-border: 240 8% 18%;
+
+    --sidebar-background: 240 10% 95%;
+    --sidebar-foreground: 240 6% 10%;
+    --sidebar-primary: 265 83% 57%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 96%;
+    --sidebar-accent-foreground: 240 6% 10%;
+    --sidebar-border: 240 6% 90%;
+    --sidebar-ring: 265 83% 57%;
+  }
+
+  .dark {
+    --background: 240 10% 7%;
+    --foreground: 240 10% 95%;
+
+    --card: 240 8% 12%;
+    --card-foreground: 240 10% 95%;
+
+    --popover: 240 8% 12%;
+    --popover-foreground: 240 10% 95%;
+
+    --primary: 265 83% 57%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 8% 18%;
+    --secondary-foreground: 240 10% 95%;
+
+    --muted: 240 8% 18%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 265 83% 57%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 8% 18%;
+    --input: 240 8% 18%;
+    --ring: 265 83% 57%;
+
+    /* Dark mode app colors */
+    --app-bg: 240 10% 7%;
+    --app-surface: 240 8% 12%;
+    --app-purple: 265 83% 57%;
+    --app-purple-light: 265 63% 67%;
+    --app-purple-dark: 265 73% 47%;
+    --app-text: 240 10% 95%;
+    --app-text-muted: 240 5% 65%;
+    --app-border: 240 8% 18%;
+
+    --sidebar-background: 240 10% 7%;
+    --sidebar-foreground: 240 10% 95%;
+    --sidebar-primary: 265 83% 57%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 8% 18%;
+    --sidebar-accent-foreground: 240 10% 95%;
+    --sidebar-border: 240 8% 18%;
+    --sidebar-ring: 265 83% 57%;
+  }
+}
+
+/* Font size variations */
+.font-size-small {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+}
+
+.font-size-medium {
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+}
+
+.font-size-large {
+  font-size: 1.125rem; /* 18px */
+  line-height: 1.75rem; /* 28px */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

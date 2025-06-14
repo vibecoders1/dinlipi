@@ -1,0 +1,179 @@
+{
+  "app": {
+    "name": "Journal",
+    "title": "Journal - Journal personnel"
+  },
+  "navigation": {
+    "diary": "Journal",
+    "calendar": "Calendrier",
+    "mood": "Humeur",
+    "settings": "Paramètres"
+  },
+  "calendar": {
+    "days": {
+      "friday": "Vendredi",
+      "saturday": "Samedi",
+      "sunday": "Dimanche", 
+      "monday": "Lundi",
+      "tuesday": "Mardi",
+      "wednesday": "Mercredi",
+      "thursday": "Jeudi"
+    },
+    "months": {
+      "january": "Janvier",
+      "february": "Février",
+      "march": "Mars",
+      "april": "Avril",
+      "may": "Mai",
+      "june": "Juin", 
+      "july": "Juillet",
+      "august": "Août",
+      "september": "Septembre",
+      "october": "Octobre",
+      "november": "Novembre",
+      "december": "Décembre"
+    },
+    "year": "2021",
+    "entry_text": "Mercredi repos. Le corps allait bien, j'ai mangé de la bonne nourriture et lu un nouveau livre le soir."
+  },
+  "home": {
+    "daily_practice": "Histoires et pratiques quotidiennes",
+    "daily_creation": "Livre de création quotidienne",
+    "mood_board": "Tableau d'humeur",
+    "word_thought": "Nuage de mots",
+    "photo_practice": "Pratique photo de 7 jours",
+    "drawing_practice": "Pratique de dessin de 7 jours",
+    "writing_practice": "Pratique d'écriture de 7 jours",
+    "music_practice": "Pratique musicale de 7 jours",
+    "love_practice": "Pratique d'auto-soin de 7 jours"
+  },
+  "mood": {
+    "title": "Tableau d'humeur",
+    "tracker": "Suivi d'humeur",
+    "bar": "Barre d'humeur",
+    "your_mood": "Votre nuage de mots",
+    "percentages": {
+      "very_sad": "10%",
+      "sad": "15%",
+      "neutral": "30%",
+      "happy": "30%",
+      "very_happy": "15%"
+    },
+    "moods": {
+      "depression": "Dépression",
+      "anger": "Colère",
+      "fear": "Peur",
+      "mixed": "Mitigé",
+      "joy": "Joie",
+      "white": "Paix",
+      "black": "Sombre",
+      "green": "Frais",
+      "beautiful": "Beau",
+      "spring": "Printemps",
+      "rain": "Pluie",
+      "cold": "Froid",
+      "hot": "Chaud"
+    }
+  },
+  "forms": {
+    "practice_name": "Nom de la pratique:",
+    "duration": "Durée (jours):",
+    "description": "Description:",
+    "description_placeholder": "Écrivez sur la pratique...",
+    "create": "Créer",
+    "save": "Sauvegarder",
+    "date": "Date:",
+    "how_was_day": "Comment s'est passée votre journée?",
+    "upload_photo": "Télécharger une photo (optionnel):",
+    "photo_url": "Ou URL de la photo (optionnel):",
+    "choose_file": "Choisir un fichier",
+    "no_file_chosen": "Aucun fichier choisi",
+    "photo_url_placeholder": "https://example.com/image.jpg"
+  },
+  "messages": {
+    "content_required": "Veuillez saisir du contenu",
+    "signin_required": "Veuillez vous connecter pour créer des entrées de journal",
+    "entry_saved": "Entrée de prière sauvegardée avec succès!",
+    "save_failed": "Échec de la sauvegarde de l'entrée",
+    "success": "Succès",
+    "error": "Erreur"
+  },
+  "entries": {
+    "daily_entry": "Entrée quotidienne"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "general": "Général",
+    "passcode": "Code d'accès",
+    "backup_restore": "Sauvegarde et restauration",
+    "customization": "Personnalisation",
+    "theme": "Thème",
+    "font_size": "Taille de police",
+    "data": "Données",
+    "about": "À propos",
+    "rate_app": "Évaluer l'application",
+    "light_mode": "Mode clair",
+    "dark_mode": "Mode sombre",
+    "font_small": "Petit",
+    "font_medium": "Moyen",
+    "font_large": "Grand",
+    "app_version": "Version de l'application",
+    "developer": "Développeur",
+    "sign_out": "Se déconnecter",
+    "team_name": "Équipe Journal",
+    "app_description": "Un espace sûr pour vos pensées et sentiments personnels"
+  },
+  "practices": {
+    "7_day_love": "Pratique d'auto-soin de 7 jours",
+    "day_1": "Jour 1: 10 minutes de méditation",
+    "day_2": "Jour 2: 30 minutes de marche",
+    "day_3": "Jour 3: Boire votre boisson préférée",
+    "day_4": "Jour 4: Détox numérique (1 heure)",
+    "day_5": "Jour 5: Apprendre quelque chose de nouveau",
+    "day_6": "Jour 6: Promenade dans la nature",
+    "day_7": "Jour 7: Pratiquer l'auto-compassion"
+  },
+  "buttons": {
+    "add": "+",
+    "back": "←"
+  },
+  "diary": {
+    "new_entry": "Ajouter une nouvelle prière",
+    "add_new": "Ajouter une nouvelle entrée de journal",
+    "no_entries": "Aucune entrée de journal pour le moment",
+    "create_first_entry": "Créez votre première entrée",
+    "search_placeholder": "Rechercher dans les entrées du journal...",
+    "entries_for_date": "Entrées pour {{date}}",
+    "no_entries_for_date": "Aucune entrée pour cette date",
+    "no_search_results": "Aucune entrée ne correspond à votre recherche",
+    "view_entry": "Voir l'entrée",
+    "edit_entry": "Modifier l'entrée",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "cancel": "Annuler",
+    "confirm_delete": "Supprimer l'entrée",
+    "delete_warning": "Êtes-vous sûr de vouloir supprimer cette entrée de journal ? Cette action ne peut pas être annulée.",
+    "entry_deleted": "Entrée de journal supprimée avec succès",
+    "entry_updated": "Entrée de journal mise à jour avec succès",
+    "entry_not_found": "Entrée non trouvée",
+    "title": "Titre",
+    "content": "Contenu",
+    "title_placeholder": "Entrez un titre pour votre entrée de journal...",
+    "title_content_required": "Le titre et le contenu sont requis",
+    "tags_label": "Étiquettes",
+    "add_tag_placeholder": "Ajouter une étiquette...",
+    "update_entry": "Mettre à jour l'entrée",
+    "entries": {
+      "relaxing_sunday": "Un dimanche relaxant. Je me suis levé tard, j'ai pris un bon brunch et j'ai passé l'après-midi à lire un nouveau livre.",
+      "productive_work": "Journée productive au travail ! J'ai terminé un projet majeur et j'ai reçu des commentaires positifs. Je me sens accompli.",
+      "cooking_recipe": "J'ai essayé une nouvelle recette pour le dîner aujourd'hui. C'était un peu difficile mais c'était délicieux ! Peut-être que je devrais cuisiner plus souvent.",
+      "garden_walk": "Il n'y a rien que j'aime mieux qu'une chaude journée d'été que de me promener dans le jardin..."
+    },
+    "tags": {
+      "book": "Livre",
+      "work": "Travail",
+      "food": "Nourriture",
+      "life": "Vie"
+    }
+  }
+}

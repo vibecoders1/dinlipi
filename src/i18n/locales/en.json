@@ -1,0 +1,179 @@
+{
+  "app": {
+    "name": "Diary",
+    "title": "Diary - Personal Journal"
+  },
+  "navigation": {
+    "diary": "Diary",
+    "calendar": "Calendar",
+    "mood": "Mood",
+    "settings": "Settings"
+  },
+  "calendar": {
+    "days": {
+      "friday": "Friday",
+      "saturday": "Saturday", 
+      "sunday": "Sunday",
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday"
+    },
+    "months": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May", 
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
+    },
+    "year": "2021",
+    "entry_text": "Wednesday rest. Body was good, ate good food and read a new book in the evening."
+  },
+  "home": {
+    "daily_practice": "Stories and Daily Practices",
+    "daily_creation": "Daily Creation Book",
+    "mood_board": "Mood Board",
+    "word_thought": "Word Cloud",
+    "photo_practice": "7 Day Photo Practice",
+    "drawing_practice": "7 Day Drawing Practice",
+    "writing_practice": "7 Day Writing Practice",
+    "music_practice": "7 Day Music Practice",
+    "love_practice": "7 Day Self-Care Practice"
+  },
+  "mood": {
+    "title": "Mood Board",
+    "tracker": "Mood Tracker",
+    "bar": "Mood Bar",
+    "your_mood": "Your Word Cloud",
+    "percentages": {
+      "very_sad": "10%",
+      "sad": "15%",
+      "neutral": "30%",
+      "happy": "30%",
+      "very_happy": "15%"
+    },
+    "moods": {
+      "depression": "Depression",
+      "anger": "Anger",
+      "fear": "Fear",
+      "mixed": "Mixed",
+      "joy": "Joy",
+      "white": "Peace",
+      "black": "Dark",
+      "green": "Fresh",
+      "beautiful": "Beautiful",
+      "spring": "Spring",
+      "rain": "Rainy",
+      "cold": "Cold",
+      "hot": "Warm"
+    }
+  },
+  "forms": {
+    "practice_name": "Practice Name:",
+    "duration": "Duration (days):",
+    "description": "Description:",
+    "description_placeholder": "Write about the practice...",
+    "create": "Create",
+    "save": "Save",
+    "date": "Date:",
+    "how_was_day": "How was your day?",
+    "upload_photo": "Upload Photo (Optional):",
+    "photo_url": "Or Photo URL (Optional):",
+    "choose_file": "Choose File",
+    "no_file_chosen": "No file chosen",
+    "photo_url_placeholder": "https://example.com/image.jpg"
+  },
+  "messages": {
+    "content_required": "Please enter some content",
+    "signin_required": "Please sign in to create diary entries", 
+    "entry_saved": "Prayer entry saved successfully!",
+    "save_failed": "Failed to save entry",
+    "success": "Success",
+    "error": "Error"
+  },
+  "entries": {
+    "daily_entry": "Daily Entry"
+  },
+  "settings": {
+    "title": "Settings",
+    "general": "General",
+    "passcode": "Passcode",
+    "backup_restore": "Backup and Restore",
+    "customization": "Customization",
+    "theme": "Theme",
+    "font_size": "Font Size",
+    "data": "Data",
+    "about": "About",
+    "rate_app": "Rate App",
+    "light_mode": "Light Mode",
+    "dark_mode": "Dark Mode",
+    "font_small": "Small",
+    "font_medium": "Medium",
+    "font_large": "Large",
+    "app_version": "App Version",
+    "developer": "Developer",
+    "sign_out": "Sign Out",
+    "team_name": "Diary Team",
+    "app_description": "A safe space for your personal thoughts and feelings"
+  },
+  "practices": {
+    "7_day_love": "7 Day Self-Care Practice",
+    "day_1": "Day 1: 10 minutes meditation",
+    "day_2": "Day 2: 30 minutes walking",
+    "day_3": "Day 3: Drink favorite beverage",
+    "day_4": "Day 4: Digital detox (1 hour)",
+    "day_5": "Day 5: Learn something new",
+    "day_6": "Day 6: Take a nature walk",
+    "day_7": "Day 7: Practice self-compassion"
+  },
+  "buttons": {
+    "add": "+",
+    "back": "←"
+  },
+  "diary": {
+    "new_entry": "Add New Prayer",
+    "add_new": "Add New Diary Entry",
+    "no_entries": "No diary entries yet",
+    "create_first_entry": "Create your first entry",
+    "search_placeholder": "Search diary entries...",
+    "entries_for_date": "Entries for {{date}}",
+    "no_entries_for_date": "No entries for this date",
+    "no_search_results": "No entries match your search",
+    "view_entry": "View Entry",
+    "edit_entry": "Edit Entry",
+    "edit": "Edit",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "confirm_delete": "Delete Entry",
+    "delete_warning": "Are you sure you want to delete this diary entry? This action cannot be undone.",
+    "entry_deleted": "Diary entry deleted successfully",
+    "entry_updated": "Diary entry updated successfully",
+    "entry_not_found": "Entry not found",
+    "title": "Title",
+    "content": "Content",
+    "title_placeholder": "Enter a title for your diary entry...",
+    "title_content_required": "Title and content are required",
+    "tags_label": "Tags",
+    "add_tag_placeholder": "Add a tag...",
+    "update_entry": "Update Entry",
+    "entries": {
+      "relaxing_sunday": "A relaxing Sunday. Woke up late, had a nice brunch and spent the afternoon reading a new book.",
+      "productive_work": "Productive day at work! Finished a major project and got positive feedback. Feeling accomplished.",
+      "cooking_recipe": "Tried a new recipe for dinner today. It was a bit challenging but turned out delicious! Maybe I should cook more often.",
+      "garden_walk": "There is nothing I like better than on a hot summer's day than taking a walk around the garden..."
+    },
+    "tags": {
+      "book": "Book",
+      "work": "Work",
+      "food": "Food",
+      "life": "Life"
+    }
+  }
+}
