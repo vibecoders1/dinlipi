@@ -5,8 +5,9 @@
   },
   "navigation": {
     "diary": "দিনলিপি",
+    "stories": "গল্প",
     "calendar": "ক্যালেন্ডার",
-    "mood": "মনোভাব",
+    "mood": "মুড",
     "settings": "সেটিংস"
   },
   "calendar": {

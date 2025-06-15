@@ -21,11 +21,10 @@ export interface DiaryEntry {
 export interface Practice {
   id: string
   user_id: string
-  name: string
-  description: string
-  duration_days: number
-  type: 'daily_creation' | 'mood_board' | 'word_cloud' | 'photo' | 'drawing' | 'writing' | 'music' | 'love'
-  is_active: boolean
+  practice_type: 'photo' | 'drawing' | 'writing' | 'music' | 'daily_creation'
+  title: string
+  content?: string
+  media_url?: string
   created_at: string
   updated_at: string
 }

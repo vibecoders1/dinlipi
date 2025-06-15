@@ -35,28 +35,28 @@ const Stories = () => {
       title: t('home.photo_practice'),
       description: '',
       color: 'bg-app-purple',
-      onClick: () => navigate('/practice')
+      onClick: () => navigate('/photo-practice')
     },
     {
       icon: Pen,
       title: t('home.drawing_practice'),
       description: '',
       color: 'bg-app-purple',
-      onClick: () => navigate('/practice')
+      onClick: () => navigate('/drawing-practice')
     },
     {
       icon: Pen,
       title: t('home.writing_practice'),
       description: '',
       color: 'bg-app-purple',
-      onClick: () => navigate('/practice')
+      onClick: () => navigate('/writing-practice')
     },
     {
       icon: Music,
       title: t('home.music_practice'),
       description: '',
       color: 'bg-app-purple',
-      onClick: () => navigate('/practice')
+      onClick: () => navigate('/music-practice')
     },
     {
       icon: Heart,

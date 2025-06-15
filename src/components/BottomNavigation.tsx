@@ -16,7 +16,7 @@ const BottomNavigation = () => {
     },
     {
       icon: Layers,
-      label: 'Stories',
+      label: t('navigation.stories'),
       path: '/stories',
     },
     {

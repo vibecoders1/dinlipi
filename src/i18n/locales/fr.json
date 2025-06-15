@@ -5,6 +5,7 @@
   },
   "navigation": {
     "diary": "Journal",
+    "stories": "Histoires",
     "calendar": "Calendrier",
     "mood": "Humeur",
     "settings": "Paramètres"

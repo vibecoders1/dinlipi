@@ -21,6 +21,10 @@ import DiaryEdit from "./pages/DiaryEdit";
 import MoodPractice from "./pages/MoodPractice";
 import WordCloudPractice from "./pages/WordCloudPractice";
 import LovePractice from "./pages/LovePractice";
+import PhotoPractice from "./pages/PhotoPractice";
+import DrawingPractice from "./pages/DrawingPractice";
+import WritingPractice from "./pages/WritingPractice";
+import MusicPractice from "./pages/MusicPractice";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -64,6 +68,10 @@ const AppContent = () => {
         <Route path="/mood-practice" element={<MoodPractice />} />
         <Route path="/word-cloud" element={<WordCloudPractice />} />
         <Route path="/love-practice" element={<LovePractice />} />
+        <Route path="/photo-practice" element={<PhotoPractice />} />
+        <Route path="/drawing-practice" element={<DrawingPractice />} />
+        <Route path="/writing-practice" element={<WritingPractice />} />
+        <Route path="/music-practice" element={<MusicPractice />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

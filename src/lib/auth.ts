@@ -29,7 +29,36 @@ export class AuthService {
   // Sign out
   static async signOut() {
     const { error } = await supabase.auth.signOut();
-    if (error) throw error;
+    // Ignore "session not found" errors as user is already logged out
+    if (error && error.message !== 'Session not found') {
+      throw error;
+    }
+  }
+
+  // Invalidate all sessions and clear storage
+  static async invalidateAllSessions() {
+    try {
+      // Sign out globally to invalidate all sessions
+      await supabase.auth.signOut({ scope: 'global' });
+    } catch (error) {
+      // Continue even if this fails
+    }
+
+    // Clear all auth-related data from localStorage
+    Object.keys(localStorage).forEach((key) => {
+      if (key.startsWith('supabase.auth.') || key.includes('sb-')) {
+        localStorage.removeItem(key);
+      }
+    });
+
+    // Clear from sessionStorage if it exists
+    if (typeof sessionStorage !== 'undefined') {
+      Object.keys(sessionStorage).forEach((key) => {
+        if (key.startsWith('supabase.auth.') || key.includes('sb-')) {
+          sessionStorage.removeItem(key);
+        }
+      });
+    }
   }
 
   // Get current session

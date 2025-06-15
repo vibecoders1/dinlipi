@@ -15,18 +15,17 @@ const PracticeForm = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [formData, setFormData] = useState({
-    name: '',
-    duration: '',
-    description: '',
+    title: '',
+    content: '',
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name.trim()) {
+    if (!formData.title.trim()) {
       toast({
         title: "Error",
-        description: "Please enter a practice name",
+        description: "Please enter a practice title",
         variant: "destructive",
       });
       return;
@@ -44,11 +43,9 @@ const PracticeForm = () => {
     try {
       await DiaryService.createPractice({
         user_id: user.id,
-        name: formData.name,
-        description: formData.description,
-        duration_days: parseInt(formData.duration) || 7,
-        type: 'daily_creation',
-        is_active: true,
+        practice_type: 'daily_creation',
+        title: formData.title,
+        content: formData.content,
       });
       
       toast({
@@ -78,44 +75,30 @@ const PracticeForm = () => {
     >
       <div className="p-4">
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Practice Name */}
+          {/* Practice Title */}
           <div className="space-y-2">
-            <Label htmlFor="name" className="text-app-text font-medium">
-              {t('forms.practice_name')}
+            <Label htmlFor="title" className="text-app-text font-medium">
+              Practice Title
             </Label>
             <Input
-              id="name"
-              value={formData.name}
-              onChange={(e) => handleInputChange('name', e.target.value)}
-              placeholder={t('forms.practice_name').replace(':', '')}
+              id="title"
+              value={formData.title}
+              onChange={(e) => handleInputChange('title', e.target.value)}
+              placeholder="Enter practice title"
               className="bg-app-surface border-app-border text-app-text placeholder:text-app-text-muted"
             />
           </div>
 
-          {/* Duration */}
+          {/* Content */}
           <div className="space-y-2">
-            <Label htmlFor="duration" className="text-app-text font-medium">
-              {t('forms.duration')}
-            </Label>
-            <Input
-              id="duration"
-              value={formData.duration}
-              onChange={(e) => handleInputChange('duration', e.target.value)}
-              placeholder={t('forms.duration').replace(':', '')}
-              className="bg-app-surface border-app-border text-app-text placeholder:text-app-text-muted"
-            />
-          </div>
-
-          {/* Description */}
-          <div className="space-y-2">
-            <Label htmlFor="description" className="text-app-text font-medium">
-              {t('forms.description')}
+            <Label htmlFor="content" className="text-app-text font-medium">
+              Description
             </Label>
             <Textarea
-              id="description"
-              value={formData.description}
-              onChange={(e) => handleInputChange('description', e.target.value)}
-              placeholder={t('forms.description_placeholder')}
+              id="content"
+              value={formData.content}
+              onChange={(e) => handleInputChange('content', e.target.value)}
+              placeholder="Describe your practice goals and approach..."
               rows={6}
               className="bg-app-surface border-app-border text-app-text placeholder:text-app-text-muted resize-none"
             />

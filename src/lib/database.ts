@@ -271,6 +271,15 @@ export class DiaryService {
     return data;
   }
 
+  static async deletePractice(id: string) {
+    const { error } = await supabase
+      .from('practices')
+      .delete()
+      .eq('id', id);
+    
+    if (error) throw error;
+  }
+
   // Practice Entries
   static async createPracticeEntry(entry: Omit<PracticeEntry, 'id' | 'created_at'>) {
     const { data, error } = await supabase
